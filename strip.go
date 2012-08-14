@@ -50,7 +50,7 @@ func (s *stripper) Read(p []byte) (int, error) {
 					s.b[(s.bepos+i)%s.len] = s.i[i]
 				}
 				s.bepos = (s.bepos + s.ipos) % s.len
-				s.ipos = 0	
+				s.ipos = 0
 			}
 			// Either write another character
 			// from the buffer and write one
@@ -68,7 +68,7 @@ func (s *stripper) Read(p []byte) (int, error) {
 		}
 		rc++
 	}
-	
+
 	// Flush the buffer
 	for s.bspos != s.bepos && wc < plen {
 		p[wc] = s.b[s.bspos]

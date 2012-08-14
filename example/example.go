@@ -5,10 +5,10 @@
 package main
 
 import (
-	"os"
 	"fmt"
-	"io"
 	"github.com/joshlf13/strip"
+	"io"
+	"os"
 )
 
 func main() {
