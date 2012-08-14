@@ -21,6 +21,9 @@ type stripper struct {
 	bepos int
 }
 
+// NewReader takes a reader to wrap and a byte sequence to ignore,
+// and returns an io.Reader which reads from the source, but ignores
+// any instances of the given byte sequence.
 func NewReader(rdr io.Reader, b []byte) io.Reader {
 	return &stripper{rdr, b, make([]byte, len(b)), len(b), 0, 0, 0}
 }
