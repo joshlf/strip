@@ -1,4 +1,4 @@
 strip
 =====
 
-An reader which ignores custom byte sequences (golang)
+The strip package provides a wrapper for an io.Reader which ignores custom byte sequences.

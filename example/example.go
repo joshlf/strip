@@ -6,6 +6,7 @@ package main
 
 import (
 	"os"
+	"fmt"
 	"io"
 	"github.com/joshlf13/strip"
 )
@@ -13,6 +14,7 @@ import (
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Printf("Usage: %s <filename>; falling back to stdin\n", os.Args[0])
+		// This reader ignores c-style comment delimeters
 		io.Copy(os.Stdout, strip.NewReader(os.Stdin, []byte{'/', '/'}))
 	}
 	file, err := os.Open(os.Args[1])
@@ -20,5 +22,8 @@ func main() {
 		fmt.Printf("Error opening file: %v\n", err)
 		os.Exit(1)
 	}
-	io.Copy(os.Stdout, strip.NewReader(file, []byte{'/', '/'}))
+	// You can nest them for multiple sets of byte sequences
+	inner := strip.NewReader(file, []byte{'/', '/'})
+	outer := strip.NewReader(inner, []byte{'/', '\n', '/'})
+	io.Copy(os.Stdout, outer)
 }

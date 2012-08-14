@@ -1,0 +1,3 @@
+All of the double// slashes will be //removed from this line.
+Because of the nested readers in example.go, these newline-separated slashes are gone!/
+/ Poof!!!
