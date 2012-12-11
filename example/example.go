@@ -14,7 +14,7 @@ import (
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Printf("Usage: %s <filename>; falling back to stdin\n", os.Args[0])
-		// This reader ignores c-style comment delimeters
+		// This reader ignores c-style comment delimiters
 		io.Copy(os.Stdout, strip.NewReader(os.Stdin, []byte{'/', '/'}))
 	}
 	file, err := os.Open(os.Args[1])
